@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Лабиринт</string>
+    <string name="hello_world">Лабиринт</string>
+    <string name="title_activity_main_menu">Главное меню</string>
+    <string name="dialog_title">Ты выиграл!</string>
+    <string name="dialog_text_next">Выбрать другой уровень сложности?</string>
+    <string name="dialog_text_last">Сыграть снова?</string>
+    <string name="retry">Да</string>
+    <string name="go_to_mainmenu">Вернуться в меню</string>
+    <string name="go_to_next">К следующему уровню</string>
+    <string name="finished_in">Завершено за:  </string>
+    <string name="seconds">  секунд!</string>
+
+</resources>

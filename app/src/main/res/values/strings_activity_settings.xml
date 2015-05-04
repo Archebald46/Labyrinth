@@ -1,0 +1,16 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_controls">Control Settings</string>
+    <string-array name="pref_control_types">
+        <item>Accelerometer</item>
+
+    </string-array>
+    <string-array name="pref_control_type_values">
+        <item>ACCELEROMETER</item>
+    </string-array>
+
+</resources>
