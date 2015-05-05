@@ -17,6 +17,7 @@ import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
 import android.view.Display;
 import android.view.Surface;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,10 +27,10 @@ import java.util.List;
 
 public class LabyrinthActivity extends Activity implements SensorEventListener, RecognitionListener {
 
-    private LabyrinthView labView;
+    /*private LabyrinthView labView;*/
     private LabyrinthModel labModel;
     SharedPreferences sharedPreferences;
-
+    public View start;
     private static final int TIME = 170;
     private static final double G = 9.81;
     private double sensitivity;
@@ -50,6 +51,7 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
     public Display mDisplay;
     public WindowManager mWindowManager;
     public float mX,mY;
+    public View labView;
 
 
 
@@ -60,11 +62,14 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
         currentDiff = (MainMenu.DIFFICULTY)bundle.get(Constants.DIFF_ID);
+        labView = (View) findViewById(R.id.labView);
+        start = (View) findViewById(R.id.start);
         switch (currentDiff) {
             case EASY: {
                 readLabyrinth(R.array.labyrinthEasy);
@@ -81,8 +86,9 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
 
         }
         this.getAvailableSensors();
+        /*setContentView(R.layout.activity_main);*/
         labView = new LabyrinthView(this, labModel);
-        setContentView(labView);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         startTime = System.currentTimeMillis();
 
@@ -90,11 +96,11 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
         Point size = new Point();
         display.getSize(size);
         int height = size.y;
-        ViewGroup.LayoutParams params = labView.getLayoutParams();
+        ViewGroup.LayoutParams params = start.getLayoutParams();
             params.height = height;
             params.width = height;
-        labView.setLayoutParams(params);
-
+        /*labView.setLayoutParams(params);*/
+        this.addContentView(labView,params);
     }
 
     private void readLabyrinth(int resId) {

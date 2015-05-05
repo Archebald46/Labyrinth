@@ -29,8 +29,6 @@ public class LabyrinthView extends View {
     private int ballColor = Color.parseColor("#A52A2A");
     private int backGroundColor = Color.parseColor("#FFEBCD");
 
-    private int coinColor = Color.parseColor("#FFFF00");
-    private int deathColor = Color.parseColor("#000000");
 
     public LabyrinthView(Context context, LabyrinthModel model) {
         super(context);

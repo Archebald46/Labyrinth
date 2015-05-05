@@ -2,7 +2,7 @@
 <resources>
     <string-array name="labyrinthEasy">
         <item>0000000001</item>
-        <item>0111110110</item>
+        <item>0111113110</item>
         <item>0100000110</item>
         <item>0101111000</item>
         <item>0101000010</item>

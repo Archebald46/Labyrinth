@@ -1,7 +1,5 @@
 package com.sapientia.ernyoke.labyrinth;
 
-import android.graphics.Color;
-
 import java.util.Random;
 
 public class LabyrinthModel {
@@ -11,7 +9,7 @@ public class LabyrinthModel {
     private int ballrow;
     private int cols;
     private int rows;
-    private int ballColor = Color.parseColor("#A52A2A");
+    public int a,b;
 
     public LabyrinthModel() {
         table = null;
@@ -67,10 +65,14 @@ public class LabyrinthModel {
             this.ballcol--;
 
         }
-        if (this.ballcol > 0 &&table[ballrow][ballcol+1] == 3 ) {
+        if (this.ballcol > 0 &&table[ballrow][ballcol] == 3 ) {
             final Random random = new Random();
-             this.ballcol = (random.nextInt(10) + 1);
-             this.ballrow =(random.nextInt(11) + 1);
+            do { a = (random.nextInt(11) + 1);
+                b = (random.nextInt(9) + 1);}
+            while (table[a][b] != 0);
+            if (table[a][b]==0){
+                this.ballcol = b;
+                this.ballrow = a;}
         }
     }
 
@@ -78,10 +80,14 @@ public class LabyrinthModel {
         if(this.ballcol < cols - 1 && (table[ballrow][ballcol + 1] == 0 || table[ballrow][ballcol + 1] == 2||table[ballrow][ballcol + 1] == 3)) {
             this.ballcol++;
         }
-        if (this.ballcol < cols-1 &&table[ballrow][ballcol-1] == 3) {
+        if (this.ballcol < cols-1 &&table[ballrow][ballcol] == 3) {
             final Random random = new Random();
-            this.ballcol = (random.nextInt(10) + 1);
-            this.ballrow =(random.nextInt(11) + 1);
+            do { a = (random.nextInt(11) + 1);
+                 b = (random.nextInt(9) + 1);}
+            while (table[a][b] != 0);
+            if (table[a][b]==0){
+            this.ballcol = b;
+            this.ballrow = a;}
         }
     }
 
@@ -89,10 +95,14 @@ public class LabyrinthModel {
         if(this.ballrow > 0 && (table[ballrow - 1][ballcol] == 0|| table[ballrow - 1][ballcol] == 2 ||table[ballrow - 1][ballcol] == 3 )) {
             this.ballrow--;
         }
-        if (this.ballrow > 0 &&table[ballrow - 1][ballcol] == 3 ) {
+        if (this.ballrow > 0 &&table[ballrow][ballcol] == 3 ) {
             final Random random = new Random();
-            this.ballcol = (random.nextInt(8) + 1);
-            this.ballrow =(random.nextInt(8) + 1);
+            do { a = (random.nextInt(11) + 1);
+                b = (random.nextInt(9) + 1);}
+            while (table[a][b] != 0);
+            if (table[a][b]==0){
+                this.ballcol = b;
+                this.ballrow = a;}
         }
     }
 
@@ -100,10 +110,14 @@ public class LabyrinthModel {
         if(this.ballrow < rows - 1 && (table[ballrow + 1][ballcol] == 0||table[ballrow + 1][ballcol] == 2||table[ballrow + 1][ballcol] == 3)) {
             this.ballrow++;
         }
-        if (this.ballrow < rows - 1 &&table[ballrow + 1][ballcol] == 3) {
+        if (this.ballrow < rows - 1 &&table[ballrow][ballcol] == 3) {
             final Random random = new Random();
-            this.ballcol = (random.nextInt(8) + 1);
-            this.ballrow =(random.nextInt(8) + 1);
+            do { a = (random.nextInt(11) + 1);
+                b = (random.nextInt(9) + 1);}
+            while (table[a][b] != 0);
+            if (table[a][b]==0){
+                this.ballcol = b;
+                this.ballrow = a;}
         }
     }
 

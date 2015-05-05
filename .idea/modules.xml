@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Labyrinth.iml" filepath="$PROJECT_DIR$/Labyrinth.iml" />
       <module fileurl="file://$PROJECT_DIR$/Labyrinth-master.iml" filepath="$PROJECT_DIR$/Labyrinth-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Labyrinth1.iml" filepath="$PROJECT_DIR$/Labyrinth1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Labyrinth_EXP.iml" filepath="$PROJECT_DIR$/Labyrinth_EXP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
