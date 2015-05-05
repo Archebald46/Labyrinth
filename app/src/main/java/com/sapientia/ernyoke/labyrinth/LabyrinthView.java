@@ -1,6 +1,8 @@
 package com.sapientia.ernyoke.labyrinth;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -45,22 +47,23 @@ public class LabyrinthView extends View {
             initialize();
             init = true;
         } else {
-
+            Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.coin);
+            Bitmap mBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.cherep);
             paint.setColor(labColor);
             canvas.drawRect(0, 0, width, height, paint);
             paint.setColor(backGroundColor);
             canvas.drawRect(4, 4, width-4, height-4, paint);
             paint.setColor(labColor);
-            paint2.setColor(coinColor);
-
+            paint2.setColor(backGroundColor);
+            paint3.setColor(backGroundColor);
             for (int i = 0; i < blocks_in_a_col; i++)
                 for (int j = 0; j < blocks_in_a_row; j++)
                     if (model.getElement(i,j) == 1)
                         canvas.drawRect(Rectangles[i][j], paint); else
                     if (model.getElement(i,j) == 2)
-                        canvas.drawRect(Rectangles[i][j], paint2); else
+                        canvas.drawBitmap(mBitmap,null,Rectangles[i][j],paint2); else
                     if (model.getElement(i,j) == 3)
-                        canvas.drawRect(Rectangles[i][j], paint3);
+                       canvas.drawBitmap(mBitmap1,null,Rectangles[i][j],paint3);
 
             paint.setColor(ballColor);
             canvas.drawRect(
@@ -79,7 +82,8 @@ public class LabyrinthView extends View {
     }
 
     private void initialize() {
-
+        Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.coin);
+        Bitmap mBitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.cherep);
         paint.setColor( labColor );
         height = this.getHeight();// canvas.getHeight();
         width = this.getWidth();// canvas.getWidth();
@@ -87,7 +91,9 @@ public class LabyrinthView extends View {
         paint.setColor( backGroundColor );
         canvas.drawRect(4, 4, width - 4, height - 4, paint);
         paint.setColor( labColor );
-        paint2.setColor(coinColor);
+        paint2.setColor(backGroundColor);
+        paint3.setColor(backGroundColor);
+
         Rectangles = new Rect[ blocks_in_a_col][ blocks_in_a_row ];
 
         int last_bottom = 4, new_bottom, last_right, new_right;
@@ -102,12 +108,12 @@ public class LabyrinthView extends View {
                 Rectangles[i][j].top = last_bottom + 1;
                 Rectangles[i][j].right = new_right;
                 Rectangles[i][j].bottom = new_bottom;
-                if (model.getElement(i,j) == 1)
-                    canvas.drawRect(Rectangles[i][j], paint); else
-                if (model.getElement(i,j) == 2)
-                    canvas.drawRect(Rectangles[i][j], paint2); else
-                if (model.getElement(i,j) == 3)
-                    canvas.drawRect(Rectangles[i][j], paint3);
+                        if (model.getElement(i,j) == 1)
+                            canvas.drawRect(Rectangles[i][j], paint); else
+                        if (model.getElement(i,j) == 2)
+                            canvas.drawBitmap(mBitmap,null,Rectangles[i][j],paint2); else
+                        if (model.getElement(i,j) == 3)
+                            canvas.drawBitmap(mBitmap1,null,Rectangles[i][j],paint3);
                 last_right = new_right;
             }
             last_bottom = new_bottom;
@@ -129,7 +135,7 @@ public class LabyrinthView extends View {
     }
 
 
-    private void drawMyCircle(int x, int y, int color) {
+    public void drawMyCircle(int x, int y, int color) {
         paint.setColor(color);
         canvas.drawCircle((Rectangles[x][y].left + Rectangles[x][y].right) / 2,
                 (Rectangles[x][y].top + Rectangles[x][y].bottom) / 2,

@@ -10,9 +10,9 @@
         <item>0101011110</item>
         <item>0101000010</item>
         <item>0101111010</item>
-        <item>0100200010</item>
+        <item>0100203010</item>
         <item>0111111110</item>
-        <item>1000300000</item>
+        <item>1000000000</item>
     </string-array>
     <string-array name="labyrinthMedium">
         <item>0001100001</item>

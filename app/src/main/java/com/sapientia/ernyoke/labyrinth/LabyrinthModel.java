@@ -1,12 +1,17 @@
 package com.sapientia.ernyoke.labyrinth;
 
+import android.graphics.Color;
+
+import java.util.Random;
+
 public class LabyrinthModel {
+    private LabyrinthView LV;
     private int [][]table;
     private int ballcol;
     private int ballrow;
     private int cols;
     private int rows;
-
+    private int ballColor = Color.parseColor("#A52A2A");
 
     public LabyrinthModel() {
         table = null;
@@ -60,6 +65,12 @@ public class LabyrinthModel {
     public void left() {
         if(this.ballcol > 0 && (table[ballrow][ballcol - 1] == 0||table[ballrow][ballcol - 1] == 2 ||table[ballrow][ballcol - 1] == 3)) {
             this.ballcol--;
+
+        }
+        if (this.ballcol > 0 &&table[ballrow][ballcol+1] == 3 ) {
+            final Random random = new Random();
+             this.ballcol = (random.nextInt(10) + 1);
+             this.ballrow =(random.nextInt(11) + 1);
         }
     }
 
@@ -67,17 +78,32 @@ public class LabyrinthModel {
         if(this.ballcol < cols - 1 && (table[ballrow][ballcol + 1] == 0 || table[ballrow][ballcol + 1] == 2||table[ballrow][ballcol + 1] == 3)) {
             this.ballcol++;
         }
+        if (this.ballcol < cols-1 &&table[ballrow][ballcol-1] == 3) {
+            final Random random = new Random();
+            this.ballcol = (random.nextInt(10) + 1);
+            this.ballrow =(random.nextInt(11) + 1);
+        }
     }
 
     public void up() {
         if(this.ballrow > 0 && (table[ballrow - 1][ballcol] == 0|| table[ballrow - 1][ballcol] == 2 ||table[ballrow - 1][ballcol] == 3 )) {
             this.ballrow--;
         }
+        if (this.ballrow > 0 &&table[ballrow - 1][ballcol] == 3 ) {
+            final Random random = new Random();
+            this.ballcol = (random.nextInt(8) + 1);
+            this.ballrow =(random.nextInt(8) + 1);
+        }
     }
 
     public void down() {
         if(this.ballrow < rows - 1 && (table[ballrow + 1][ballcol] == 0||table[ballrow + 1][ballcol] == 2||table[ballrow + 1][ballcol] == 3)) {
             this.ballrow++;
+        }
+        if (this.ballrow < rows - 1 &&table[ballrow + 1][ballcol] == 3) {
+            final Random random = new Random();
+            this.ballcol = (random.nextInt(8) + 1);
+            this.ballrow =(random.nextInt(8) + 1);
         }
     }
 
