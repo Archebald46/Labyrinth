@@ -1,6 +1,10 @@
 package com.sapientia.ernyoke.labyrinth;
 
+import android.os.Handler;
+
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LabyrinthModel {
     private LabyrinthView LV;
@@ -10,6 +14,7 @@ public class LabyrinthModel {
     private int cols;
     private int rows;
     public int a,b;
+
 
     public LabyrinthModel() {
         table = null;
@@ -60,19 +65,34 @@ public class LabyrinthModel {
 
     }
 
-    public void left() {
+        public void left() {
         if(this.ballcol > 0 && (table[ballrow][ballcol - 1] == 0||table[ballrow][ballcol - 1] == 2 ||table[ballrow][ballcol - 1] == 3)) {
             this.ballcol--;
 
         }
         if (this.ballcol > 0 &&table[ballrow][ballcol] == 3 ) {
-            final Random random = new Random();
-            do { a = (random.nextInt(11) + 1);
-                b = (random.nextInt(9) + 1);}
-            while (table[a][b] != 0);
-            if (table[a][b]==0){
-                this.ballcol = b;
-                this.ballrow = a;}
+            final Handler handler = new Handler();
+            final Timer timer = new Timer(false);
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Random random = new Random();
+                            do { a = (random.nextInt(11) + 1);
+                                b = (random.nextInt(9) + 1);}
+                            while (table[a][b] != 0);
+                            if (table[a][b]==0){
+                                ballcol = b;
+                                ballrow = a;
+                                timer.cancel();
+                            }
+                        }
+                    });
+                }
+            };
+            timer.schedule(timerTask, 170,60000);
         }
     }
 
@@ -81,13 +101,30 @@ public class LabyrinthModel {
             this.ballcol++;
         }
         if (this.ballcol < cols-1 &&table[ballrow][ballcol] == 3) {
-            final Random random = new Random();
-            do { a = (random.nextInt(11) + 1);
-                 b = (random.nextInt(9) + 1);}
-            while (table[a][b] != 0);
-            if (table[a][b]==0){
-            this.ballcol = b;
-            this.ballrow = a;}
+            final Handler handler = new Handler();
+            final Timer timer = new Timer(false);
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Random random = new Random();
+                            do { a = (random.nextInt(11) + 1);
+                                b = (random.nextInt(9) + 1);}
+                            while (table[a][b] != 0);
+                            if (table[a][b]==0){
+                                ballcol = b;
+                                ballrow = a;
+                                timer.cancel();
+                            }
+                        }
+                    });
+                }
+            };
+            timer.schedule(timerTask, 170,60000);
+
+
         }
     }
 
@@ -96,13 +133,28 @@ public class LabyrinthModel {
             this.ballrow--;
         }
         if (this.ballrow > 0 &&table[ballrow][ballcol] == 3 ) {
-            final Random random = new Random();
-            do { a = (random.nextInt(11) + 1);
-                b = (random.nextInt(9) + 1);}
-            while (table[a][b] != 0);
-            if (table[a][b]==0){
-                this.ballcol = b;
-                this.ballrow = a;}
+            final Handler handler = new Handler();
+            final Timer timer = new Timer(false);
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Random random = new Random();
+                            do { a = (random.nextInt(11) + 1);
+                                b = (random.nextInt(9) + 1);}
+                            while (table[a][b] != 0);
+                            if (table[a][b]==0){
+                                ballcol = b;
+                                ballrow = a;
+                                timer.cancel();
+                            }
+                        }
+                    });
+                }
+            };
+            timer.schedule(timerTask, 170,60000);
         }
     }
 
@@ -111,13 +163,28 @@ public class LabyrinthModel {
             this.ballrow++;
         }
         if (this.ballrow < rows - 1 &&table[ballrow][ballcol] == 3) {
-            final Random random = new Random();
-            do { a = (random.nextInt(11) + 1);
-                b = (random.nextInt(9) + 1);}
-            while (table[a][b] != 0);
-            if (table[a][b]==0){
-                this.ballcol = b;
-                this.ballrow = a;}
+            final Handler handler = new Handler();
+            final Timer timer = new Timer(false);
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Random random = new Random();
+                            do { a = (random.nextInt(11) + 1);
+                                b = (random.nextInt(9) + 1);}
+                            while (table[a][b] != 0);
+                            if (table[a][b]==0){
+                                ballcol = b;
+                                ballrow = a;
+                                timer.cancel();
+                            }
+                        }
+                    });
+                }
+            };
+            timer.schedule(timerTask, 170,60000);
         }
     }
 

@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +54,8 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
     public WindowManager mWindowManager;
     public float mX,mY;
     public View labView;
-
+    public View other;
+    public RelativeLayout STR;
 
 
     private long startTime;
@@ -68,8 +71,10 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
         currentDiff = (MainMenu.DIFFICULTY)bundle.get(Constants.DIFF_ID);
-        labView = (View) findViewById(R.id.labView);
-        start = (View) findViewById(R.id.start);
+        labView = findViewById(R.id.labView);
+        start =  findViewById(R.id.start);
+        STR =  (RelativeLayout)  findViewById(R.id.start);
+        other =  findViewById(R.id.Other);
         switch (currentDiff) {
             case EASY: {
                 readLabyrinth(R.array.labyrinthEasy);
@@ -96,11 +101,16 @@ public class LabyrinthActivity extends Activity implements SensorEventListener, 
         Point size = new Point();
         display.getSize(size);
         int height = size.y;
+        int width = size.x;
         ViewGroup.LayoutParams params = start.getLayoutParams();
             params.height = height;
             params.width = height;
-        /*labView.setLayoutParams(params);*/
-        this.addContentView(labView,params);
+        labView.setLayoutParams(params);
+        STR.addView(labView,params);
+        other.setLayoutParams(new RelativeLayout.LayoutParams(width,width - height));
+
+
+
     }
 
     private void readLabyrinth(int resId) {

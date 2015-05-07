@@ -8,22 +8,31 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/labView"
-        >
 
+        android:id="@+id/labView">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            />
     </RelativeLayout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/labView"
+        android:layout_toEndOf="@id/labView"
         android:id="@+id/Other"
+        android:background="@drawable/backgr"
+
+
         >
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-
                android:textSize="16dp"
-               android:text="fdsfdsfsfkhgjghjgjg"/>
+               android:text="fdsfdsfsfkhgjghjgjgfssssssssssssssssssssssssssssssssssssssssssss"/>
 
     </RelativeLayout>
 </RelativeLayout>
